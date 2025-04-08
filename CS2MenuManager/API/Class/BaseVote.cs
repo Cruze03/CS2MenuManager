@@ -52,6 +52,13 @@ public abstract class BaseVote(string title, string details, YesNoVoteResult res
     public int VoteTime { get; set; } = 20;
 
     /// <summary>
+    /// Displays the vote to selective players.
+    /// </summary>
+    /// <param name="players">List of players to display vote to.</param>
+    /// <param name="time">The duration of the vote in seconds.</param>
+    public abstract void DisplayVote(List<CCSPlayerController> players, int time);
+
+    /// <summary>
     /// Displays the vote to all players.
     /// </summary>
     /// <param name="time">The duration of the vote in seconds.</param>

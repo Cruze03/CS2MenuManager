@@ -16,6 +16,17 @@ public class PanoramaVote(string title, string details, YesNoVoteResult resultCa
     : BaseVote(title, details, resultCallback, handler, plugin)
 {
     /// <summary>
+    /// Displays the vote to selective players.
+    /// </summary>
+    /// <param name="players">List of players to display vote to.</param>
+    /// <param name="time">The duration of the vote in seconds.</param>
+    public override void DisplayVote(List<CCSPlayerController> players, int time)
+    {
+        VoteTime = time;
+        OpenVoteMenu(players, this, (p, m) => new PanoramaVoteInstance(p, m));
+    }
+
+    /// <summary>
     /// Displays the vote to all players.
     /// </summary>
     /// <param name="time">The duration of the vote in seconds.</param>
@@ -186,7 +197,7 @@ public class PanoramaVoteInstance : BaseVoteInstance
 
     private void SendVoteStartUM(RecipientFilter recipientFilter)
     {
-        UserMessage um = UserMessage.FromPartialName("VoteStart");
+        UserMessage um = UserMessage.FromId(346);
 
         um.SetInt("team", -1);
         um.SetInt("player_slot", VoteMenu.VoteCaller?.Slot ?? 99);

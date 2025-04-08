@@ -46,6 +46,13 @@ public interface IVoteMenu
     int VoteTime { get; }
 
     /// <summary>
+    /// Displays the vote to selective players.
+    /// </summary>
+    /// <param name="players">List of players to display vote to.</param>
+    /// <param name="time">The duration of the vote in seconds.</param>
+    void DisplayVote(List<CCSPlayerController> players, int time);
+
+    /// <summary>
     /// Displays the vote to all players.
     /// </summary>
     /// <param name="time">The duration of the vote in seconds.</param>
